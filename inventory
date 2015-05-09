@@ -1,1 +1,6 @@
+[jenkins]
 jenkins_master
+jenkins_slave
+[web]
+bbs
+
