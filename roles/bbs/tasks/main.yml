@@ -1,0 +1,35 @@
+---
+# Variable setup.
+# - name: Include OS-Specific variables
+#   include_vars: "{{ ansible_os_family }}.yml"
+
+# Setup/install tasks.
+# - name: Include OS-Specific tasks
+#   include: "{{ ansible_os_family }}.yml"
+
+- include: redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include: debian.yml
+  when: ansible_os_family == 'Debian'
+
+# Make sure Jenkins starts, then configure Jenkins.
+# - name: Ensure BBS is started and runs on startup.
+  # service: name=jenkins state=started enabled=yes
+
+# - name: Wait for BBS application to start up before proceeding.
+  # shell: curl --head --silent http://{{ jenkins_hostname }}:8080/cli/
+  # register: result
+  # until: result.stdout.find("200 OK") != -1
+  # retries: "60"
+  # delay: "{{ jenkins_connection_delay }}"
+  # changed_when: false
+
+# - name: Get the jenkins-cli jarfile from the Jenkins server.
+#   get_url:
+#     url: "http://{{ jenkins_hostname }}:8080/jnlpJars/jenkins-cli.jar"
+#     dest: "{{ jenkins_jar_location }}"
+#   register: jarfile_get
+#   until: "'OK' in jarfile_get.msg or 'file already exists' in jarfile_get.msg"
+#   retries: 5
+#   delay: 10

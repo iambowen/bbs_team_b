@@ -1,0 +1,24 @@
+---
+
+- name: ensure jdk 7 is install properly
+  apt: name=java7-jdk  state=installed
+
+- name: ensure tomcat is install properly
+  apt: name=tomcat7  state=installed
+
+- name: ensure apache is installed properly
+  apt: name=apache2 state=installed
+
+- name: install mysql
+  apt: name=mysql-server-5.6  state=installed
+
+- name: start mysql
+  service: name=mysql state=started
+
+- name: db schema/data initialization
+  shell: mysql -uroot < /vagrant/db/baseline_teamb.sql
+
+#deploy war
+- name: distribute jar pkg to server
+  copy: src=/Users/bwma/github/bbs_team_b/build/libs/bbs_team_b.war dest=/var/lib/tomcat7/webapps/ owner=root group=root
+  notify: restart tomcat

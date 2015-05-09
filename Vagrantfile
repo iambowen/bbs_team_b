@@ -10,20 +10,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.define :jenkins_master do |master|
-    master.vm.box = "ubuntu/trusty64"
-    master.vm.hostname = "master"
-    master.vm.network :private_network, ip: "10.0.15.10"
-    master.vm.network :forwarded_port, guest: 80, host: 8080
-    master.vm.provider "virtualbox" do |vb|
-      vb.memory = "512"
-    end
-    master.vm.provision :ansible do |ansible|
-      ansible.playbook = "master.yml"
-      ansible.sudo = true
-      ansible.host_key_checking = false
-    end
-  end
+  # config.vm.define :jenkins_master do |master|
+  #   master.vm.box = "ubuntu/trusty64"
+  #   master.vm.hostname = "master"
+  #   master.vm.network :private_network, ip: "10.0.15.10"
+  #   master.vm.network :forwarded_port, guest: 80, host: 8080
+  #   master.vm.provider "virtualbox" do |vb|
+  #     vb.memory = "512"
+  #   end
+  #   master.vm.provision :ansible do |ansible|
+  #     ansible.playbook = "master.yml"
+  #     ansible.sudo = true
+  #     ansible.host_key_checking = false
+  #   end
+  # end
 
   # config.vm.define :jenkins_slave do |vm|
   #   mgmt_config.vm.box = "ubuntu/trusty64"
@@ -38,6 +38,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #     ansible.host_key_checking = false
   #   end
   # end
+  #### config for web
+  config.vm.define :bbs do |bbs|
+    bbs.vm.box = "ubuntu/trusty64"
+    bbs.vm.hostname = "bbs"
+    bbs.vm.network :private_network, ip: "10.0.15.20"
+    bbs.vm.network :forwarded_port, guest: 8080, host: 8080
+    bbs.vm.provider "virtualbox" do |vb|
+      vb.memory = "512"
+    end
+    bbs.vm.provision :ansible do |ansible|
+      ansible.playbook = "bbs.yml"
+      ansible.host_key_checking = false
+    end
+  end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

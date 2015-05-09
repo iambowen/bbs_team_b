@@ -1,0 +1,6 @@
+# ----
+# - name: ensure jdk is install properly
+#   yum: name=openjdk-1.7.0  state=installed
+
+# - name: distribute jar pkg to server
+#   copy:
