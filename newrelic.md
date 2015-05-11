@@ -7,16 +7,23 @@
 
 ### NewRelic
 
-1. code level monitoring
-2. framework monitoring(JVM/Ruby VM etc)
-3. Traffic monitoring
-4. Comparasion after deployment
-5. Alerting
-
+1. Response time
+2. Throughput
+3. Web Transactions
+4. Trace Detail
+5. Browser Trace
+6. Traffic monitoring
+7. Deploy notification,(compare after deployment)
+8. Background Task?
+9. Error rate
+10. Key Transactions
+11. Framework monitoring(JVM/Ruby VM etc)
+12. Alerting
+....
 ### Benefit
 
 1. Understanding prod performance without login to prod boxes;
-2. Analysis
+2. Analysis issues, trouble shooting
 3. Monitoring for deployment
 4. .....
 
@@ -24,3 +31,7 @@
 
 1. Provision with ansible for newrelic sys daemon
 2. Provision for BBS application
+
+### references
+
+[1](http://www.slideshare.net/peckadesign/honza-dolecek-new-relic-posobota-201305)
