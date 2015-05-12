@@ -1,3 +1,10 @@
+## Questions
+1. How can you tell the traffic to one server, e.g RPM
+2. How can you tell the performance of a server
+3. How can you tell the performance of the application
+4. How do know the RUM?
+....
+
 ## Monitoring
 
 1. Server Monitoring
