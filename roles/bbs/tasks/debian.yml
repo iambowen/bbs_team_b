@@ -20,7 +20,7 @@
 
 #deploy war
 - name: distribute jar pkg to server
-  copy: src=~/github/bbs_team_b/build/libs/bbs_team_b.war dest=/var/lib/tomcat7/webapps/ owner=root group=root
+  copy: src={{project_home}}/build/libs/bbs_team_b.war dest=/var/lib/tomcat7/webapps/ owner=root group=root
   notify: restart tomcat
 
 - name: install unzip
