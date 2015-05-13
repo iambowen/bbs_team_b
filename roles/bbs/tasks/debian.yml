@@ -1,4 +1,10 @@
 ---
+- name: update source list
+  copy: src=sources.list dest=/etc/apt/
+
+- name: update index
+  shell: "rm -fR /var/lib/apt/lists/* &&  apt-get update"
+  ignore_errors: yes
 
 - name: ensure jdk 7 is install properly
   apt: name=java7-jdk  state=installed
@@ -6,14 +12,15 @@
 - name: ensure tomcat is install properly
   apt: name=tomcat7  state=installed
 
-- name: ensure apache is installed properly
-  apt: name=apache2 state=installed
+# - name: ensure apache is installed properly
+#   apt: name=apache2 state=installed
+#
 
 - name: install mysql
   apt: name=mysql-server-5.6  state=installed
 
 - name: start mysql
-  service: name=mysql state=started
+  shell: /etc/init.d/mysql start
 
 - name: db schema/data initialization
   shell: mysql -uroot < /vagrant/db/baseline_teamb.sql
@@ -23,8 +30,8 @@
   copy: src={{project_home}}/build/libs/bbs_team_b.war dest=/var/lib/tomcat7/webapps/ owner=root group=root
   notify: restart tomcat
 
-- name: install unzip
-  apt: name=unzip state=installed
+- name: create newrelic log directory
+  file: path=/opt/newrelic/logs/ group=tomcat7 owner=tomcat7  state=directory
 
 - name: install newrelic agent for tomcat
   copy: src=newrelic/  dest=/opt/newrelic directory_mode
