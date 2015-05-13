@@ -20,14 +20,14 @@
 
 #deploy war
 - name: distribute jar pkg to server
-  copy: src=/Users/bwma/github/bbs_team_b/build/libs/bbs_team_b.war dest=/var/lib/tomcat7/webapps/ owner=root group=root
+  copy: src=~/github/bbs_team_b/build/libs/bbs_team_b.war dest=/var/lib/tomcat7/webapps/ owner=root group=root
   notify: restart tomcat
 
 - name: install unzip
   apt: name=unzip state=installed
 
 - name: install newrelic agent for tomcat
-  unarchive: copy=yes src=newrelic.zip dest=/opt/
+  copy: src=newrelic/  dest=/opt/ directory_mode
 
 # INFO: Deploying web application directory /var/lib/tomcat7/webapps/ROOT
 - name: install newrelic java agent
