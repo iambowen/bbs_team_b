@@ -27,7 +27,7 @@
   apt: name=unzip state=installed
 
 - name: install newrelic agent for tomcat
-  copy: src=newrelic/  dest=/opt/ directory_mode
+  copy: src=newrelic/  dest=/opt/newrelic directory_mode
 
 # INFO: Deploying web application directory /var/lib/tomcat7/webapps/ROOT
 - name: install newrelic java agent
