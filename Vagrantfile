@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     bbs.vm.network :private_network, ip: "10.0.15.20"
     bbs.vm.network :forwarded_port, guest: 8080, host: 8080
     bbs.vm.provider "virtualbox" do |vb|
-      vb.memory = "512"
+      vb.memory = "1024"
     end
     bbs.vm.provision :ansible do |ansible|
       ansible.playbook = "bbs.yml"
