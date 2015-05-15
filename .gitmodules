@@ -1,0 +1,3 @@
+[submodule "roles/newrelic"]
+	path = roles/newrelic
+	url = git@github.com:iambowen/ansible-role-newrelic-sysmond.git
