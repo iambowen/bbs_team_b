@@ -2,10 +2,10 @@
 - hosts: bbs
   user: vagrant
   sudo: yes
-  # vars:
-  #   newrelic_license_key: 3580c4c99b3767145a0acac04d897ce52f88c785
   vars:
+    newrelic_license_key: "3580c4c99b3767145a0acac04d897ce52f88c785"
     project_home: .
+
   roles:
     - bbs
-    # - newrelic
+    - newrelic

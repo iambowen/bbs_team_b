@@ -1,0 +1,2 @@
+- name: restart newrelic-sysmond
+  action: service name=newrelic-sysmond state=restarted
