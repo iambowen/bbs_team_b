@@ -39,19 +39,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   end
   # end
   #### config for web
-  config.vm.define :bbs do |bbs|
-    bbs.vm.box = "ubuntu/trusty64"
-    bbs.vm.hostname = "bbs"
-    bbs.vm.network :private_network, ip: "10.0.15.20"
-    bbs.vm.network :forwarded_port, guest: 8080, host: 8080
-    bbs.vm.provider "virtualbox" do |vb|
-      vb.memory = "1024"
-    end
-    bbs.vm.provision :ansible do |ansible|
-      ansible.playbook = "bbs.yml"
-      ansible.host_key_checking = false
-    end
-  end
+  # config.vm.define :bbs do |bbs|
+  #   bbs.vm.box = "centos"
+  #   bbs.vm.hostname = "bbs"
+  #   bbs.vm.network :private_network, ip: "10.0.15.20"
+  #   bbs.vm.network :forwarded_port, guest: 8080, host: 8080
+  #   bbs.vm.provider "virtualbox" do |vb|
+  #     vb.memory = "1024"
+  #   end
+  # end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
