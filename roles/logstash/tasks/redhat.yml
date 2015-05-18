@@ -1,0 +1,9 @@
+- name: install gpg key
+  rpm_key: key= https://packages.elasticsearch.org/GPG-KEY-elasticsearch  state=present
+
+- name: add logstash repo
+  file: src=logstash.repo dest=/etc/yum.repos.d/logstash.repo mode=755 owner=root group=root
+
+- name: install logstash package
+  yum: name=logstash state=installed
+  notify: start logstash

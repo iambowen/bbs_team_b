@@ -1,0 +1,8 @@
+---
+- hosts: logstash
+  user: vagrant
+  sudo: yes
+
+  roles:
+    - java
+    - logstash

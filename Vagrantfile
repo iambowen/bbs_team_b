@@ -49,20 +49,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   end
   # end
 
- #  config.vm.define :logstash do |master|
- #    master.vm.box = "ubuntu/trusty64"
- #    master.vm.hostname = "master"
- #    master.vm.network :private_network, ip: "10.0.15.50"
- #    master.vm.network :forwarded_port, guest: 80, host: 8088
- #    master.vm.provider "virtualbox" do |vb|
- #      vb.memory = "1024"
- #    end
- #    master.vm.provision :ansible do |ansible|
- #      ansible.playbook = "master.yml"
- #      ansible.sudo = true
- #      ansible.host_key_checking = false
- #    end
- #  end
+   config.vm.define :logstash do |master|
+     master.vm.box = "ubuntu/trusty64"
+     master.vm.hostname = "master"
+     master.vm.network :private_network, ip: "10.0.15.50"
+     master.vm.network :forwarded_port, guest: 80, host: 8088
+     master.vm.provider "virtualbox" do |vb|
+       vb.memory = "1024"
+     end
+     master.vm.provision :ansible do |ansible|
+       ansible.playbook = "logstash.yml"
+       ansible.sudo = true
+       ansible.host_key_checking = false
+     end
+   end
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
