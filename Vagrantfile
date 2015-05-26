@@ -10,21 +10,30 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-   config.vm.define :jenkins_master do |master|
+#   config.vm.define :jenkins_master do |master|
+#     master.vm.box = "ubuntu/trusty64"
+#     master.vm.hostname = "master"
+#     master.vm.network :private_network, ip: "10.0.15.10"
+#     master.vm.network :forwarded_port, guest: 80, host: 8080
+#     master.vm.provider "virtualbox" do |vb|
+#       vb.memory = "512"
+#     end
+#     master.vm.provision :ansible do |ansible|
+#       ansible.playbook = "master.yml"
+#       ansible.sudo = true
+#       ansible.host_key_checking = false
+#     end
+#   end
+
+   config.vm.define :splunk do |master|
      master.vm.box = "ubuntu/trusty64"
-     master.vm.hostname = "master"
-     master.vm.network :private_network, ip: "10.0.15.10"
-     master.vm.network :forwarded_port, guest: 80, host: 8080
+     master.vm.hostname = "splunk-rw"
+     master.vm.network :private_network, ip: "10.0.15.30"
+     master.vm.network :forwarded_port, guest: 8000, host: 8000
      master.vm.provider "virtualbox" do |vb|
-       vb.memory = "512"
-     end
-     master.vm.provision :ansible do |ansible|
-       ansible.playbook = "master.yml"
-       ansible.sudo = true
-       ansible.host_key_checking = false
+       vb.memory = "1024"
      end
    end
-
   # config.vm.define :jenkins_slave do |vm|
   #   mgmt_config.vm.box = "ubuntu/trusty64"
   #   mgmt_config.vm.hostname = "slave-01"

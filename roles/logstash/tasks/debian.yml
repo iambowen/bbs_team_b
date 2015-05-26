@@ -7,9 +7,9 @@
     state=present
 
 - name: install package
-  apt: pkg=logstash
+  apt: pkg=logstash state=installed
   notify: start logstash
 
 #make sure the logstash is started
 - name: make sure logstash is started
-  service: name=logstash state=started
+  service: name=logstash state=restarted
